@@ -4,6 +4,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # rails_12factor for Heroku deployment
 gem 'rails_12factor', group: :production
 
+# Add devise
+gem 'devise', '~> 4.7', '>= 4.7.3'
+
 ruby '2.6.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
