@@ -32,3 +32,7 @@ This is a facebook clone app.
 *  Rails version: Rails 5.2.4.4
 
 *  Database: psql (PostgreSQL) 10.14
+
+-------------------------------------------------------------------------------
+
+# Don't forget to set up 'puma' gem, Jakub!
