@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_18_134447) do
+ActiveRecord::Schema.define(version: 2020_10_19_214050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "friend_requests", force: :cascade do |t|
+    t.bigint "requestor_id"
+    t.bigint "receiver_id"
+    t.boolean "accepted", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_friend_requests_on_receiver_id"
+    t.index ["requestor_id"], name: "index_friend_requests_on_requestor_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "body"
@@ -37,5 +47,7 @@ ActiveRecord::Schema.define(version: 2020_10_18_134447) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "friend_requests", "users", column: "receiver_id"
+  add_foreign_key "friend_requests", "users", column: "requestor_id"
   add_foreign_key "posts", "users"
 end
