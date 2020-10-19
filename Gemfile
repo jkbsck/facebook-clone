@@ -7,6 +7,8 @@ gem 'rails_12factor', group: :production
 # Add devise
 gem 'devise', '~> 4.7', '>= 4.7.3'
 
+gem 'geckodriver-helper'
+
 ruby '2.6.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -59,9 +61,13 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '~> 3.142', '>= 3.142.7'
+  gem 'poltergeist', '~> 1.18', '>= 1.18.1'
+  gem 'phantomjs', '~> 2.1', '>= 2.1.1.0'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'guard', '~> 2.16', '>= 2.16.2'
+  gem 'guard-minitest', '~> 2.4', '>= 2.4.6'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

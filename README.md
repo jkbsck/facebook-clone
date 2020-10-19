@@ -36,3 +36,5 @@ This is a facebook clone app.
 -------------------------------------------------------------------------------
 
 # Don't forget to set up 'puma' gem, Jakub!
+
+# Guard gem is inside of config/enviroment.rb => test. Shouldn't that be development?

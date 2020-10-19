@@ -3,6 +3,11 @@ require "application_system_test_case"
 class PostsTest < ApplicationSystemTestCase
   setup do
     @post = posts(:one)
+
+    visit new_user_session_url
+    fill_in('Email', with: 'bruno@example.com')
+    fill_in('Password', with: '123456')
+    click_button "Log in" #user_session_url
   end
 
   test "visiting the index" do
@@ -15,7 +20,6 @@ class PostsTest < ApplicationSystemTestCase
     click_on "New Post"
 
     fill_in "Body", with: @post.body
-    fill_in "User", with: @post.user_id
     click_on "Create Post"
 
     assert_text "Post was successfully created"
@@ -27,7 +31,6 @@ class PostsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Body", with: @post.body
-    fill_in "User", with: @post.user_id
     click_on "Update Post"
 
     assert_text "Post was successfully updated"
