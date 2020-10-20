@@ -1,0 +1,5 @@
+<%= form_with(url: 'send_request', method: "post", local: true) do |form| %>
+  <%= form.hidden_field :requestor_id, value: current_user.id %>
+  <%= form.hidden_field :receiver_id, value: user.id %>
+  <%= form.submit "Add Friend" %>
+<% end %>

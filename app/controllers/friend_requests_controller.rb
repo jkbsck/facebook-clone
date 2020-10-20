@@ -1,21 +1,24 @@
 class FriendRequestsController < ApplicationController
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
   before_action :set_friend_request, only: [:edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
+
 
   def new
-    @friend_request = FriendRequest.new
+    @friend_request = current_user.friend_requests_as_requestor.build
   end
 
   def index
-    @friend_requests = FriendRequest.all
+    # View only pending requests
+    @friend_requests = FriendRequest.all.map { |request| request unless request.accepted == true }
   end
 
   def create
-    @friend_request = FriendRequest.new(friend_request_create_params)
+    @friend_request = current_user.friend_requests_as_requestor.build(friend_request_create_params)
 
     respond_to do |format|
       if @friend_request.save
-        format.html { redirect_to @friend_requests, notice: 'Friend request was successfully created.' }
+        format.html { redirect_to posts_path, notice: 'Friend request was successfully created.' }
         format.json { render :index, status: :created, location: @friend_requests }
       else
         format.html { render :new }
@@ -53,7 +56,7 @@ class FriendRequestsController < ApplicationController
     end
 
     def friend_request_create_params
-      params.require(:friend_request).permit(:requestor_id, :receiver_id)
+      params.permit(:receiver_id)
     end
 
     # accept_nested_attributes_for might be needed in User model -> google 'strong params' for more

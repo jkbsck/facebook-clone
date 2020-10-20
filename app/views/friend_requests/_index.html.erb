@@ -1,0 +1,8 @@
+<% current_user.friend_requests_as_receiver.each do |request| %>
+  Request from <b><%= request.requestor.username %></b>
+  to <b><%= request.receiver.username %></b><br>
+<% end %><br>
+
+<% @friend_requests.each do |r| %>
+  <%= r.requestor.username + " --> " + r.receiver.username %><br>
+<% end %>

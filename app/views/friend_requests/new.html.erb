@@ -1,2 +1,9 @@
 <h1>FriendRequests#new</h1>
 <p>Find me in app/views/friend_requests/new.html.erb</p>
+
+<%= form_with(url: '/send_request', method: "post", local: true) do |form| %>
+  <%= form.hidden_field :requestor_id, value: current_user.id %>
+  <%= form.hidden_field :receiver_id, value: params[:receiver_id] %>
+  <%= form.submit "Add Friend" %>
+<% end %>
+

@@ -2,30 +2,44 @@
 
 <h1>Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Body</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="index-container">
+  <div class="index-posts-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Body</th>
+          <th>User</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.body %></td>
-        <td><%= post.user.username %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.body %></td>
+            <td><%= post.user.username %></td>
+            <td><%= link_to 'Show', post %></td>
+            <td><%= link_to 'Edit', edit_post_path(post) %></td>
+            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+    <% if user_signed_in? %>
+      <%= link_to 'New Post', new_post_path %>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
+  <div class="index-users-container">
+    <% User.all.each do |user| %>
+      <span><%= user.username %></span>
+      <span><%= render "friend_requests/form", user: user %></span><br>
+    <% end %>
+  </div>
 
-<% if user_signed_in? %>
-  <%= link_to 'New Post', new_post_path %>
-<% end %>
+  <div class="index-friend-requests-container">
+    <%= render "friend_requests/index", friend_requests: @friend_requests %>
+  </div>
+</div>
