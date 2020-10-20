@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 friend_request_one:
-  user: one
-  user: two
+  requestor: user_one
+  receiver: user_two
   accepted: false
 
 friend_request_two:
-  user: two
-  user: one
+  requestor: user_two
+  receiver: user_one
   accepted: true

@@ -4,11 +4,11 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @post = posts(:one)
+    @post = posts(:post_one)
     #sign_in_as users(:one)
 
     get new_user_session_url
-    sign_in users(:one)
+    sign_in users(:user_one)
     post user_session_url
   end
 

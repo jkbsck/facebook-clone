@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class PostsTest < ApplicationSystemTestCase
   setup do
-    @post = posts(:one)
+    @post = posts(:post_one)
 
     visit new_user_session_url
     fill_in('Email', with: 'bruno@example.com')
