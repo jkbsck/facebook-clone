@@ -6,7 +6,9 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
-    @friend_requests = FriendRequest.all
+    #@friend_requests = FriendRequest.all
+    @friend_requests_accepted = FriendRequest.all.map { |request| request if request.accepted == true }
+    @friend_requests_pending = FriendRequest.all.map { |request| request if request.accepted == false }
   end
 
   # GET /posts/1

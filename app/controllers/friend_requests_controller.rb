@@ -10,7 +10,7 @@ class FriendRequestsController < ApplicationController
 
   def index
     # View only pending requests
-    @friend_requests = FriendRequest.all.map { |request| request unless request.accepted == true }
+    @friend_requests = FriendRequest.all #.map { |request| request unless request.accepted == true }
   end
 
   def create
@@ -38,10 +38,10 @@ class FriendRequestsController < ApplicationController
   def update
     respond_to do |format|
       if @friend_request.update(friend_request_accept_params)
-        format.html { redirect_to @friend_requests, notice: 'Friend request was successfully updated(accepted).' }
+        format.html { redirect_to posts_path, notice: 'Friend request was successfully updated(accepted).' }
         format.json { render :index, status: :ok, location: @friend_requests }
       else
-        format.html { render :edit }
+        format.html { redirect_to posts_path }
         format.json { render json: @friend_request.errors, status: :unprocessable_entity }
       end
     end
