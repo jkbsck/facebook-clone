@@ -7,5 +7,20 @@ friend_request_one:
 
 friend_request_two:
   requestor: user_two
-  receiver: user_one
-  accepted: true
+  receiver: user_four
+  accepted: false
+
+friend_request_three:
+  requestor: user_three
+  receiver: user_four
+  accepted: false
+
+friend_request_four:
+  requestor: user_four
+  receiver: user_three
+  accepted: false
+
+friend_request_five:
+  requestor: user_four
+  receiver: user_four
+  accepted: false

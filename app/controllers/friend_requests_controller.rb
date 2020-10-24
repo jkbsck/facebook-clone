@@ -21,7 +21,7 @@ class FriendRequestsController < ApplicationController
         format.html { redirect_to posts_path, notice: 'Friend request was successfully created.' }
         format.json { render :index, status: :created, location: @friend_requests }
       else
-        format.html { render :new }
+        format.html { redirect_to posts_path, notice: 'Friend request could not be made.' }
         format.json { render json: @friend_request.errors, status: :unprocessable_entity }
       end
     end

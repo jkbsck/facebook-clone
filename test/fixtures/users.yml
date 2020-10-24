@@ -13,3 +13,13 @@ user_two:
   username: "MyString Henry"
   email: "namesurname@example.com"
   encrypted_password: "bru45ddda87lle?"
+
+user_three:
+  username: "Third Henry"
+  email: "3namesurname@example.com"
+  encrypted_password: "bru45d488dda87lle?"
+
+user_four:
+  username: "fourth Henry"
+  email: "nameme@example.com"
+  encrypted_password: "45ddda87lle?"

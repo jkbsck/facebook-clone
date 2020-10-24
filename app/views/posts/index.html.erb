@@ -35,7 +35,9 @@
   <div class="index-users-container">
     <% User.all.each do |user| %>
       
-        <% unless (user == current_user) || current_user.friend_requests_as_requestor.any? { |e| e.receiver == user } %>
+        <% unless (user == current_user) || %>
+                  <% current_user.friend_requests_as_requestor.any? { |e| e.receiver == user } || %>
+                  <% (FriendRequest.all.any? { |r| r.requestor.id == user.id && r.receiver.id == current_user.id }) %>
           <span><%= user.username %></span>
           <span><%= render "friend_requests/form", user: user %></span><br>
         <% end %>
