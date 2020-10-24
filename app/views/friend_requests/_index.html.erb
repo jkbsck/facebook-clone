@@ -20,7 +20,7 @@
 </div><br>
 
 <div style="color: red">pending:
-  <br><br><% @friend_requests_pending.each do |r| %>
+  <% @friend_requests_pending.each do |r| %>
     <%= r.requestor.username + " --> " + r.receiver.username unless r.nil? %><br>
   <% end %>
 </div>
