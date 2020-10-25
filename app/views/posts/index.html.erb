@@ -10,7 +10,17 @@
   <% if @users_searched %>
     <div class="search-users-container-results">
       <% @users_searched.each do |user| %>
-        <%= user.username %>
+        <div class="searched-user-container">
+          <%= user.username unless current_user == user %>
+          <% unless current_user == user || %>
+            <% current_user.friend_requests_as_requestor.any? { |e| e.receiver == user } || %>
+            <% (FriendRequest.all.any? { |r| r.requestor.id == user.id && r.receiver.id == current_user.id }) %>
+            <%= render "friend_requests/form", user: user %>
+          <% end %>
+          <% unless current_user == user %>
+            <br>
+          <% end %>
+        </div>
       <% end %>
     </div>
   <% end %>
@@ -49,12 +59,12 @@
   <div class="index-users-container">
     <% User.all.each do |user| %>
       
-        <% unless (user == current_user) || %>
-                  <% current_user.friend_requests_as_requestor.any? { |e| e.receiver == user } || %>
-                  <% (FriendRequest.all.any? { |r| r.requestor.id == user.id && r.receiver.id == current_user.id }) %>
-          <span><%= user.username %></span>
-          <span><%= render "friend_requests/form", user: user %></span><br>
-        <% end %>
+      <% unless (user == current_user) || %>
+                <% current_user.friend_requests_as_requestor.any? { |e| e.receiver == user } || %>
+                <% (FriendRequest.all.any? { |r| r.requestor.id == user.id && r.receiver.id == current_user.id }) %>
+        <span><%= user.username %></span>
+        <span><%= render "friend_requests/form", user: user %></span><br>
+      <% end %>
       
     <% end %>
   </div>
