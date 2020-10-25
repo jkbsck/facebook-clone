@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_210012) do
+ActiveRecord::Schema.define(version: 2020_10_25_125930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 2020_10_20_210012) do
     t.index ["receiver_id"], name: "index_friend_requests_on_receiver_id"
     t.index ["requestor_id", "receiver_id"], name: "index_friend_requests_on_requestor_id_and_receiver_id", unique: true
     t.index ["requestor_id"], name: "index_friend_requests_on_requestor_id"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.bigint "friend_a_id"
+    t.bigint "friend_b_id"
+    t.bigint "friend_request_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_a_id"], name: "index_friendships_on_friend_a_id"
+    t.index ["friend_b_id"], name: "index_friendships_on_friend_b_id"
+    t.index ["friend_request_id"], name: "index_friendships_on_friend_request_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -50,5 +61,8 @@ ActiveRecord::Schema.define(version: 2020_10_20_210012) do
 
   add_foreign_key "friend_requests", "users", column: "receiver_id"
   add_foreign_key "friend_requests", "users", column: "requestor_id"
+  add_foreign_key "friendships", "friend_requests"
+  add_foreign_key "friendships", "users", column: "friend_a_id"
+  add_foreign_key "friendships", "users", column: "friend_b_id"
   add_foreign_key "posts", "users"
 end

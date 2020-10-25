@@ -1,6 +1,9 @@
 class FriendRequest < ApplicationRecord
   belongs_to :requestor, class_name: "User"
   belongs_to :receiver, class_name: "User"
+  has_one :friendship
+
+  accepts_nested_attributes_for :friendship
   validate :friend_request_valid?
 
   def friend_request_valid?
