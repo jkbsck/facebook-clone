@@ -10,4 +10,12 @@ class User < ApplicationRecord
   has_many :friend_requests_as_receiver, foreign_key: :receiver_id, class_name: "FriendRequest", dependent: :destroy
   accepts_nested_attributes_for :friend_requests_as_receiver
   accepts_nested_attributes_for :friend_requests_as_receiver
+
+  def self.search(search)
+    if search 
+      where(["LOWER(username) LIKE ?","%#{search.downcase}%"])
+    else
+      all
+    end
+  end 
 end

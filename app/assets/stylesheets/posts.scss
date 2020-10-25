@@ -2,6 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.search-users-container {
+  border-right: 3vw;
+  margin: 2vw;
+  padding: .7vh;
+  text-align: end;
+  border-top: solid 1px;
+  border-bottom: solid 1px;
+}
+
 .index-container {
   display: flex;
   justify-content: space-between;

@@ -2,6 +2,20 @@
 
 <h1>Posts</h1>
 
+<div class="search-users-container">
+  <%= form_with(url: 'posts', method: 'get', local: true) do %>
+    <%= text_field_tag(:search) %>
+    <%= submit_tag("Find Friends") %>
+  <% end %>
+  <% if @users_searched %>
+    <div class="search-users-container-results">
+      <% @users_searched.each do |user| %>
+        <%= user.username %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
 <div class="index-container">
   <div class="index-posts-container">
     <table>
