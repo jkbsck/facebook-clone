@@ -19,10 +19,16 @@ class FriendshipsController < ApplicationController
   end
 
   def index
-    @friendships = Friendship.all
+    @friendships = Friendship.all.map { |friendship| friendship if (friendship.friend == current_user) || (friendship.inverse_friend == current_user) }.compact
   end
 
   def destroy
+    @friendship = Friendship.find(params[:id])
+    @friendship.destroy
+    respond_to do |format|
+      format.html { redirect_to friendships_path, notice: 'Friendship was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private

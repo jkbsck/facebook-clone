@@ -1,6 +1,15 @@
 <h1>Friendships#index</h1>
 <p>Find me in app/views/friendships/index.html.erb</p>
 
-<% @friendships.each do |friendship| %>
-  <%= friendship %>
-<% end %>
+<h2>Friends:</h2>
+<ul class="friendships-friends-container">
+  <% @friendships.each do |friendship| %>
+    <li>
+      <%= current_user == friendship.friend ? friendship.inverse_friend.username : friendship.friend.username %>
+      <%= form_for friendship, method: "delete", local: true do %>
+       
+        <%= submit_tag "End Friendship" %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
