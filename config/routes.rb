@@ -1,14 +1,4 @@
 Rails.application.routes.draw do
-  #match 'friendships/create', to: 'friendships#create', via: 'post'
-  #get 'friendships/index'
-  #delete 'friendships/destroy'
-  # get 'friend_requests/new'
-  # get 'friend_requests/index'
-  # get 'friend_requests/create'
-  # get 'friend_requests/destroy'
-  # get 'friend_requests/update'
-  # get 'friend_requests/edit'
-
   resources :friend_requests, except: [:show]
 
   resources :friendships, only: [:create, :index, :destroy]
