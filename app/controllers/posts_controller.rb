@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :allow_user?, only: [:edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
@@ -78,5 +79,10 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:body, :user_id)
+    end
+
+    # Only current user is permitted to #edit, #update or #destroy post
+    def allow_user?
+      redirect_to posts_path unless current_user == @post.user
     end
 end

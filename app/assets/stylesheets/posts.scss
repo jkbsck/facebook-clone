@@ -27,5 +27,13 @@
 
 .index-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+
+.index-posts-container {
+  max-width: 35vw;
+}
+
+.index-friendships-container {
+  max-width: 15vw;
 }

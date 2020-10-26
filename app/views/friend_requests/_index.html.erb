@@ -3,12 +3,20 @@
     Request from <b><%= request.requestor.username %></b>
     to <b><%= request.receiver.username %></b><br>
 
-    <%= form_for request, method: "patch", local: true do |form| %>
-      <%= form.hidden_field :requestor_id, value: request.requestor.id %>
-      <%= form.hidden_field :receiver_id, value: request.receiver.id %>
-      <%= form.hidden_field :accepted, value: true %>
+    <%= form_with model: Friendship, method: "post", local: true do |form| %>
+      <%= form.hidden_field :friend_id, value: request.requestor.id %>
+      <%= form.hidden_field :inverse_friend_id, value: request.receiver.id %>
+      <%= form.hidden_field :friend_request_id, value: request.id %>
+      <%#= form.hidden_field :accepted, value: true %>
       <%= form.submit "Accept" %>
     <% end %>
+
+    <%#= form_for request, method: "patch", local: true do |form| %>
+      <%#= form.hidden_field :requestor_id, value: request.requestor.id %>
+      <%#= form.hidden_field :receiver_id, value: request.receiver.id %>
+      <%#= form.hidden_field :accepted, value: true %>
+      <%#= form.submit "Accept" %>
+    <%# end %>
 
   <% end %>
 <% end %>

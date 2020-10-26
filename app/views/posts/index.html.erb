@@ -40,8 +40,8 @@
             <td><%= post.body %></td>
             <td><%= post.user.username %></td>
             <td><%= link_to 'Show', post %></td>
-            <td><%= link_to 'Edit', edit_post_path(post) %></td>
-            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Edit', edit_post_path(post) if current_user == post.user %></td>
+            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } if current_user == post.user %></td>
           </tr>
         <% end %>
       </tbody>
@@ -69,4 +69,10 @@
   <div class="index-friend-requests-container">
     <%= render "friend_requests/index", friend_requests_accepted: @friend_requests_accepted, friend_requests_pending: @friend_requests_pending %>
   </div>
+
+  <ul class="index-friendships-container">
+    <% @friendships.each do |friendship| %>
+      <li><%= friendship.friend.username + " and " + friendship.inverse_friend.username + " are friends" %></li>
+    <% end %>
+  </ul>
 </div>

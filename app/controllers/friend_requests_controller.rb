@@ -40,9 +40,10 @@ class FriendRequestsController < ApplicationController
       if @friend_request.update(friend_request_accept_params)
 
         # Create friendship between two users when receiver accepts the request
+        #redirect_to friendships_create_path, friend_request: @friend_request
         @friend_request.create_friendship(friend: @friend_request.requestor, inverse_friend: @friend_request.receiver, friend_request: @friend_request)
 
-        format.html { redirect_to posts_path, notice: 'Friend request was successfully updated(accepted).' }
+        format.html { redirect_to posts_path, notice: "Friend request accepted." } # controller: 'friendships', action: 'create', friend_request: @friend_request }
         format.json { render :index, status: :ok, location: @friend_requests }
       else
         format.html { redirect_to posts_path }
