@@ -28,6 +28,14 @@ friend_requests_list = [
   [ 13, 8, 1, true ], [ 14, 9, 2, false ], [ 15, 11, 10, false ]
 ]
 
+posts_list = [
+  [ 1, "Nobody has ever achieved more than this administration.", 7 ],
+  [ 2, "My password is 123456, what's yours guys?", 2 ],
+  [ 3, "I am dumb lol", 2 ],
+  [ 4, "I drink others piss from public urinal deuces", 2 ],
+  [ 5, "C'mon leave my brother be. He's retarded", 1]
+]
+
 User.all.destroy_all
 users_list.each do |id, username, email, password|
   User.create!(id: id,
@@ -49,5 +57,11 @@ friendships_list = friend_requests_list.each do |friend_request|
       inverse_friend_id: friend_request[2],
       friend_request_id: friend_request.first)
   end
+end
+
+posts_list.each do |id, body, user_id|
+  Post.create!(id: id,
+    body: body,
+    user_id: user_id)
 end
 

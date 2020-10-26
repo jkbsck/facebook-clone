@@ -6,9 +6,9 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
-    #@users = User.all
-    @friend_requests_accepted = FriendRequest.all.map { |request| request if request.accepted == true }
-    @friend_requests_pending = FriendRequest.all.map { |request| request if request.accepted == false }
+    @friendships = Friendship.all
+    @friend_requests_accepted = FriendRequest.all.map { |request| request if request.accepted == true }.compact
+    @friend_requests_pending = FriendRequest.all.map { |request| request if request.accepted == false }.compact
 
     if params.has_key?(:search)
       @users_searched = User.search(params[:search])

@@ -15,18 +15,12 @@
 
 <div style="color: green">accepted:<br>
   <% @friend_requests_accepted.each do |r| %>
-    <%= r.requestor.username + " --> " + r.receiver.username unless r.nil? %>
-    <% unless r.nil? %>
-      <br>
-    <% end %>
+    <%= r.requestor.username + " --> " + r.receiver.username unless r.nil? %><br>
   <% end %>
 </div><br>
 
 <div style="color: red">pending:<br>
   <% @friend_requests_pending.each do |r| %>
-    <%= r.requestor.username + " --> " + r.receiver.username unless r.nil? %>
-    <% unless r.nil? %>
-      <br>
-    <% end %>
+    <%= r.requestor.username + " --> " + r.receiver.username unless r.nil? %><br>
   <% end %>
 </div>
