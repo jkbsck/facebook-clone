@@ -27,14 +27,14 @@ ActiveRecord::Schema.define(version: 2020_10_25_125930) do
   end
 
   create_table "friendships", force: :cascade do |t|
-    t.bigint "friend_a_id"
-    t.bigint "friend_b_id"
-    t.bigint "friend_request_id"
+    t.bigint "friend_id"
+    t.bigint "inverse_friend_id"
+    t.bigint "friend_request_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["friend_a_id"], name: "index_friendships_on_friend_a_id"
-    t.index ["friend_b_id"], name: "index_friendships_on_friend_b_id"
+    t.index ["friend_id"], name: "index_friendships_on_friend_id"
     t.index ["friend_request_id"], name: "index_friendships_on_friend_request_id"
+    t.index ["inverse_friend_id"], name: "index_friendships_on_inverse_friend_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2020_10_25_125930) do
   add_foreign_key "friend_requests", "users", column: "receiver_id"
   add_foreign_key "friend_requests", "users", column: "requestor_id"
   add_foreign_key "friendships", "friend_requests"
-  add_foreign_key "friendships", "users", column: "friend_a_id"
-  add_foreign_key "friendships", "users", column: "friend_b_id"
+  add_foreign_key "friendships", "users", column: "friend_id"
+  add_foreign_key "friendships", "users", column: "inverse_friend_id"
   add_foreign_key "posts", "users"
 end

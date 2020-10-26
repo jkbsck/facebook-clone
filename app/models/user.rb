@@ -11,8 +11,14 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :friend_requests_as_receiver
   accepts_nested_attributes_for :friend_requests_as_receiver
 
-  has_many :friendships, ->(user){ where("friend_a_id = ? OR friend_b_id = ?", user.id, user.id) }
-  has_many :friends, through: :friendships
+  #has_many :friendships, ->(user){ where("friend_a_id = ? OR friend_b_id = ?", user.id, user.id) }
+  #has_many :friends, through: :friendships, source: :users
+  #has_many :friend_bs, through: :friendships, foreign_key: :friend_b_id, source: :users
+
+  has_many :friendships, foreign_key: :friend_id
+  has_many :friends, through: :friendships, source: :friend
+  has_many :inverse_friendships, class_name: "Friendship", foreign_key: :inverse_friend_id
+  has_many :inverse_friends, through: :inverse_friendships, source: :inverse_friend
 
   def self.search(search)
     if search 
