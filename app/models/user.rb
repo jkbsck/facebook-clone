@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: "Friendship", foreign_key: :inverse_friend_id
   has_many :inverse_friends, through: :inverse_friendships, source: :inverse_friend
 
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
 
   def self.search(search)

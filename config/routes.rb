@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   match '/send_request', to: 'friend_requests#create', via: 'post'
 
   resources :posts
+
+  resources :likes, only: [:create, :destroy]
   
   devise_for :users, :controllers => { registrations: 'registrations' }
 
