@@ -7,6 +7,13 @@ class LikesController < ApplicationController
   end
 
   def destroy
+    #@like = Post.find(like_params[:like][:post_id]).destroy
+    @like = Like.find(params[:id])
+    @like.destroy
+    respond_to do |format|
+      format.html { redirect_to posts_path, notice: 'Unliked successfuly.' }
+      format.json { head :no_content }
+    end
   end
 
   private

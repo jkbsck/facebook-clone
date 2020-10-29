@@ -30,7 +30,7 @@
         <tr>
           <th>Body</th>
           <th>User</th>
-          <th colspan="5"></th>
+          <th colspan="6"></th>
         </tr>
       </thead>
 
@@ -43,11 +43,17 @@
             <td><%= link_to 'Edit', edit_post_path(post) if current_user == post.user %></td>
             <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } if current_user == post.user %></td>
             <td>
-              <%= form_with model: Like, local: true do |form| %>
-                <%= form.hidden_field :post_id, value: post.id %>
-                <%= form.submit "Like" %>
+              <% unless post.liking_users.include?(current_user) %>
+                <%= form_with model: Like, local: true do |form| %>
+                  <%= form.hidden_field :post_id, value: post.id %>
+                  <%= form.submit "Like" %>
+                <% end %>
+              <% else %>
+                <% like = post.likes.find { |like| like.user == current_user } %>
+                <%= form_for like, method: "delete", local: true do |form| %>
+                  <%= form.submit "Unlike" %>
+                <% end %>
               <% end %>
-              <%#= link_to 'Like', post.likes.create(post: post, user: current_user) %>
             </td>
             <td>Likes: <%= post.nil? ? '0' : post.likes.count %></td>
           </tr>
