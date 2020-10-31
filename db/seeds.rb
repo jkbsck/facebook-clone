@@ -22,10 +22,10 @@ users_list = [
 ]
 
 friend_requests_list = [
-  [ 1, 1, 2, false ], [ 2, 1, 4, false ], [ 3, 1, 5, false ], [ 4, 1, 9, true ],
-  [ 5, 2, 4, false ], [ 6, 2, 10, true ], [ 7, 2, 11, false ], [ 8, 3, 2, false ],
-  [ 9, 3, 7, false ], [ 10, 3, 8, false ], [ 11, 6, 5, true ], [ 12, 6, 7, false ],
-  [ 13, 8, 1, true ], [ 14, 9, 2, false ], [ 15, 11, 10, false ]
+  [ 1, 1, 2, true ], [ 2, 1, 4, true ], [ 3, 1, 5, false ], [ 4, 1, 9, true ],
+  [ 5, 2, 4, false ], [ 6, 2, 10, true ], [ 7, 2, 11, true ], [ 8, 3, 2, true ],
+  [ 9, 3, 7, false ], [ 10, 3, 8, false ], [ 11, 6, 5, true ], [ 12, 6, 7, true ],
+  [ 13, 8, 1, true ], [ 14, 9, 2, true ], [ 15, 11, 10, true ]
 ]
 
 posts_list = [
@@ -33,7 +33,36 @@ posts_list = [
   [ 2, "My password is 123456, what's yours guys?", 2 ],
   [ 3, "I am dumb lol", 2 ],
   [ 4, "I drink others piss from public urinal deuces", 2 ],
-  [ 5, "C'mon leave my brother be. He's retarded", 1]
+  [ 5, "C'mon leave my brother be. He's retarded", 1],
+  [ 6, "I just want to say that my granny isn't frog. Just so you know. ", 12],
+  [ 7, "Been to disneyland, it was awsome!", 8],
+  [ 8, "What is good against diarrhea?", 11],
+  [ 9, "That new clipping album is their best to the date imo", 6],
+  [ 10, "What if earth stops spinning?", 1],
+  [ 11, "Covid is a liberal hoax, wake up!", 4],
+  [ 12, "I miss the summer so much :(", 9],
+  [ 13, "Like if you love Jesus. Amen.", 7]
+]
+
+likes_list = [
+  [ 1, 5, 1 ], [ 2, 3, 1 ], [ 3, 4, 2 ], [ 4, 6, 2 ], [ 5, 5, 2 ], [ 6, 8, 2 ],
+  [ 7, 9, 2 ], [ 8, 10, 2 ], [ 9, 11, 2 ], [ 10, 2, 2 ], [ 11, 2, 3 ], [ 12, 2, 4 ],
+  [ 13, 9, 4 ], [ 14, 10, 4 ], [ 15, 6, 4 ], [ 16, 3, 6 ], [ 17, 3, 13 ], [ 18, 5, 13 ]
+]
+
+comments_list = [
+  [ 1, 3, 1, "Only the next one will. MAGA!" ],
+  [ 2, 7, 1, "Absolutely Jon, let's stop the left from destroying our country" ],
+  [ 3, 5, 6, "Go to your bedroom freddie." ],
+  [ 4, 2, 1, "Hey, guys, want to go to disneyland?" ],
+  [ 5, 4, 8, "try some desinfectant" ],
+  [ 6, 9, 9, "Is it? Got to listen to it." ], 
+  [ 7, 11, 9, "idk the TEATB is better imo" ],
+  [ 8, 6, 9, "just give it a chance it will grow on you" ],
+  [ 9, 3, 13, "Amen" ],
+  [ 10, 7, 13, "amen" ],
+  [ 11, 4, 13, "MAGA!" ],
+  [ 12, 2, 13, "AEMN!!!!!" ]
 ]
 
 User.all.destroy_all
@@ -63,5 +92,18 @@ posts_list.each do |id, body, user_id|
   Post.create!(id: id,
     body: body,
     user_id: user_id)
+end
+
+likes_list.each do |id, user_id, post_id|
+  Like.create!(id: id,
+    user_id: user_id,
+    post_id: post_id)
+end
+
+comments_list.each do |id, user_id, post_id, body|
+  Comment.create!(id: id,
+    user_id: user_id,
+    post_id: post_id,
+    body: body)
 end
 
