@@ -30,7 +30,9 @@
         <tr>
           <th>Body</th>
           <th>User</th>
-          <th colspan="6"></th>
+          <th colspan="3"></th>
+          <th>Comments</th>
+          <th colspan="2"></th>
         </tr>
       </thead>
 
@@ -42,6 +44,25 @@
             <td><%= link_to 'Show', post %></td>
             <td><%= link_to 'Edit', edit_post_path(post) if current_user == post.user %></td>
             <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } if current_user == post.user %></td>
+            <td>
+              <% if post.comments.any? %>
+                <% post.comments.each do |comment| %>
+                  <b><%= comment.user.username %>: </b>
+                  <%= comment.body %><br>
+                  <% if comment.user == current_user %>
+                    <%= form_for comment, method: "delete", local: true do |form| %>
+                      <%= form.submit "Delete comment" %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+              <%= form_with model: Comment, local: true do |form| %>
+                <%= form.hidden_field :post_id, value: post.id %>
+                <%= form.text_field :body %>
+                <%= form.submit "Add Comment" %>
+              <% end %>
+            </td>
+            
             <td>
               <% unless post.liking_users.include?(current_user) %>
                 <%= form_with model: Like, local: true do |form| %>

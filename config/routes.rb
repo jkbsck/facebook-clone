@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :posts
 
   resources :likes, only: [:create, :destroy]
+
+  resources :comments, only: [:create, :destroy]
   
   devise_for :users, :controllers => { registrations: 'registrations' }
 
