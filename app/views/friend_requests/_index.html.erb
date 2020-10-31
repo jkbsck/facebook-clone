@@ -1,34 +1,41 @@
-<% current_user.friend_requests_as_receiver.each do |request| %>
-  <% unless request.accepted == true %>
-    Request from <b><%= request.requestor.username %></b>
-    to <b><%= request.receiver.username %></b><br>
+<!-- Show every user's pending friend requests from other users -->
+<ul class="pending-friend-requests-container">
+  <% current_user.friend_requests_as_receiver.each do |request| %>
+    <% unless request.accepted == true %>
+      <li class="pending-friend-requests-container-item">
+        <span>Request from <b><%= request.requestor.username %></b></span>
+        <!--to <b><%#= request.receiver.username %></b><br>-->
 
-    <%= form_with model: Friendship, method: "post", local: true do |form| %>
-      <%= form.hidden_field :friend_id, value: request.requestor.id %>
-      <%= form.hidden_field :inverse_friend_id, value: request.receiver.id %>
-      <%= form.hidden_field :friend_request_id, value: request.id %>
-      <%#= form.hidden_field :accepted, value: true %>
-      <%= form.submit "Accept" %>
+        <div class="friend-request-accept-button-container">
+          <%= form_with model: Friendship, method: "post", local: true do |form| %>
+            <%= form.hidden_field :friend_id, value: request.requestor.id %>
+            <%= form.hidden_field :inverse_friend_id, value: request.receiver.id %>
+            <%= form.hidden_field :friend_request_id, value: request.id %>
+            <%#= form.hidden_field :accepted, value: true %>
+            <%= form.submit "Accept", class: "friend-request-accept-button" %>
+          <% end %>
+        </div>
+
+        <%#= form_for request, method: "patch", local: true do |form| %>
+          <%#= form.hidden_field :requestor_id, value: request.requestor.id %>
+          <%#= form.hidden_field :receiver_id, value: request.receiver.id %>
+          <%#= form.hidden_field :accepted, value: true %>
+          <%#= form.submit "Accept" %>
+        <%# end %>
+      </li>
     <% end %>
-
-    <%#= form_for request, method: "patch", local: true do |form| %>
-      <%#= form.hidden_field :requestor_id, value: request.requestor.id %>
-      <%#= form.hidden_field :receiver_id, value: request.receiver.id %>
-      <%#= form.hidden_field :accepted, value: true %>
-      <%#= form.submit "Accept" %>
-    <%# end %>
-
   <% end %>
-<% end %>
+</ul>
 
-<div style="color: green">accepted:<br>
-  <% @friend_requests_accepted.each do |r| %>
-    <%= r.requestor.username + " --> " + r.receiver.username unless r.nil? %><br>
-  <% end %>
+<!-- This part shows all accepted and pending requests -->
+<!--<div style="color: green">accepted:<br>
+  <%# @friend_requests_accepted.each do |r| %>
+    <%#= r.requestor.username + " -> " + r.receiver.username unless r.nil? %><br>
+  <%# end %>
 </div><br>
 
 <div style="color: red">pending:<br>
-  <% @friend_requests_pending.each do |r| %>
-    <%= r.requestor.username + " --> " + r.receiver.username unless r.nil? %><br>
-  <% end %>
-</div>
+  <%# @friend_requests_pending.each do |r| %>
+    <%#= r.requestor.username + " -> " + r.receiver.username unless r.nil? %><br>
+  <%# end %>
+</div>-->

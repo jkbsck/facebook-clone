@@ -2,28 +2,35 @@
 
 <h1>Posts</h1>
 
+<!-- Upper container with search bar -->
 <div class="search-users-container">
   <%= form_with(url: 'posts', method: 'get', local: true) do %>
     <%= text_field_tag(:search) %>
     <%= submit_tag("Find Friends") %>
   <% end %>
-  <% if @users_searched %>
+  <% unless @users_searched.empty?%>
     <div class="search-users-container-results">
-      <% @users_searched.each do |user| %>
-        <div class="searched-user-container">
-          <%= user.username unless current_user == user %>
-          <% unless current_user == user || %>
-            <% current_user.friend_requests_as_requestor.any? { |e| e.receiver == user } || %>
-            <% (FriendRequest.all.any? { |r| r.requestor.id == user.id && r.receiver.id == current_user.id }) %>
-            <%= render "friend_requests/form", user: user %>
-          <% end %>         
-        </div>
-      <% end %>
+      <div class="search-users-container-results-child">
+        <% @users_searched.each do |user| %>
+          <div class="searched-user-container">
+            <%= user.username unless current_user == user %>
+            <% unless current_user == user || %>
+              <% current_user.friend_requests_as_requestor.any? { |e| e.receiver == user } || %>
+              <% (FriendRequest.all.any? { |r| r.requestor.id == user.id && r.receiver.id == current_user.id }) %>
+              <div class="searched-user-button">
+                <%= render "friend_requests/form", user: user %>
+              </div>
+            <% end %>         
+          </div>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>
 
+<!-- index container with all other data -->
 <div class="index-container">
+  <!-- container for table with posts, comments and likes -->
   <div class="index-posts-container">
     <table>
       <thead>
@@ -88,26 +95,29 @@
     <% end %>
   </div>
 
-  <div class="index-users-container">
-    <% User.all.each do |user| %>
+  <!-- container with all users available to become friend with -->
+  <!--<div class="index-users-container">
+    <%# User.all.each do |user| %>
       
-      <% unless (user == current_user) || %>
-                <% current_user.friend_requests_as_requestor.any? { |e| e.receiver == user } || %>
-                <% (FriendRequest.all.any? { |r| r.requestor.id == user.id && r.receiver.id == current_user.id }) %>
-        <span><%= user.username %></span>
-        <span><%= render "friend_requests/form", user: user %></span><br>
-      <% end %>
+      <%# unless (user == current_user) || %>
+                <%# current_user.friend_requests_as_requestor.any? { |e| e.receiver == user } || %>
+                <%# (FriendRequest.all.any? { |r| r.requestor.id == user.id && r.receiver.id == current_user.id }) %>
+        <span><%#= user.username %></span>
+        <span><%#= render "friend_requests/form", user: user %></span><br>
+      <%# end %>
       
-    <% end %>
-  </div>
+    <%# end %>
+  </div>-->
 
+  <!-- This part shows user's pending requests and -->
   <div class="index-friend-requests-container">
     <%= render "friend_requests/index", friend_requests_accepted: @friend_requests_accepted, friend_requests_pending: @friend_requests_pending %>
   </div>
 
-  <ul class="index-friendships-container">
-    <% @friendships.each do |friendship| %>
-      <li><%= friendship.friend.username + " and " + friendship.inverse_friend.username + " are friends" %></li>
-    <% end %>
-  </ul>
+  <!-- This part shows all friendships -->
+  <!--<ul class="index-friendships-container">
+    <%# @friendships.each do |friendship| %>
+      <li><%#= friendship.friend.username + " and " + friendship.inverse_friend.username + " are friends" %></li>
+    <%# end %>
+  </ul>-->
 </div>

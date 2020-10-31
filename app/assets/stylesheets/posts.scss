@@ -3,19 +3,33 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .search-users-container {
+  position: relative;
   border-right: 3vw;
   margin: 2vw;
-  padding: .7vh;
+  padding: 5px;
   text-align: end;
   border-top: solid 1px;
   border-bottom: solid 1px;
 }
 
 .search-users-container-results {
+  position: absolute;
   display: flex;
   flex-direction: column;
-  margin-left: 60vw;
+  right: 0px;
+  left: auto;
+  //justify-content: flex-end;
+}
+
+.search-users-container-results-child {
+  display: flex;
+  width: 250px;
+  flex-direction: column;
+  margin-right: 30px;
   padding-top: 5px;
+  margin-top: 8px;
+  background-color: rgba(30, 229, 255, 0.9);
+  border-radius: 7%;
 }
 
 .searched-user-container {
@@ -25,15 +39,20 @@
   border-top: solid 1px;
 }
 
+.searched-user-button {
+  padding-left: 20px;
+}
+
 .index-container {
   display: flex;
+  position: static;
   justify-content: space-around;
 }
 
 .index-posts-container {
-  max-width: 35vw;
+  max-width: 60vw;
 }
 
-.index-friendships-container {
-  max-width: 15vw;
-}
+/*.index-friendships-container {
+  max-width: 25vw;
+}*/
