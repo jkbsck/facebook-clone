@@ -16,9 +16,9 @@ class User < ApplicationRecord
   #has_many :friend_bs, through: :friendships, foreign_key: :friend_b_id, source: :users
 
   has_many :friendships, foreign_key: :friend_id
-  has_many :friends, through: :friendships, source: :friend
+  has_many :friends, through: :friendships, source: :inverse_friend
   has_many :inverse_friendships, class_name: "Friendship", foreign_key: :inverse_friend_id
-  has_many :inverse_friends, through: :inverse_friendships, source: :inverse_friend
+  has_many :inverse_friends, through: :inverse_friendships, source: :friend
 
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
