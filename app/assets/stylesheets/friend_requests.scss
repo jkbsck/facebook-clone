@@ -21,19 +21,8 @@
 
 .friend-request-accept-button {
   background: linear-gradient(to right,#fff, #69f 20%, rgb(20, 130, 250) 30%, rgb(20, 130, 250));
-  color: rgb(255, 255, 255);
-  font-weight: 800;
-  border-end-end-radius: 45%;
-  border-style: none;
-  border-right: solid 7px;
-  //border-top: solid 1px;
-  border-color: rgba(55, 157, 253, 0.76);
-  padding-left: 12px;
-  padding-right: 5px;
-  padding-bottom: 5px;
 }
 
 .friend-request-accept-button:hover {
-  transform: scale(1.03);
   border-color: rgb(55, 157, 253);
 }

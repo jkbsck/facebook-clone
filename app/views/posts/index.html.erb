@@ -2,30 +2,56 @@
 
 <h1>Posts</h1>
 
-<!-- Upper container with search bar -->
+<!-- Upper container with search bar, friend requests -->
 <div class="search-users-container">
   <%= form_with(url: 'posts', method: 'get', local: true) do %>
     <%= text_field_tag(:search) %>
-    <%= submit_tag("Find Friends") %>
+    <%= submit_tag("Find Friends", class: "find-friends-button") %>
   <% end %>
-  <% unless @users_searched.empty?%>
-    <div class="search-users-container-results">
+  <% unless @users_searched.nil? || @users_searched.empty? %>
+    <div id="search-users-container-results" class="search-users-container-results">
       <div class="search-users-container-results-child">
         <% @users_searched.each do |user| %>
-          <div class="searched-user-container">
-            <%= user.username unless current_user == user %>
-            <% unless current_user == user || %>
-              <% current_user.friend_requests_as_requestor.any? { |e| e.receiver == user } || %>
-              <% (FriendRequest.all.any? { |r| r.requestor.id == user.id && r.receiver.id == current_user.id }) %>
-              <div class="searched-user-button">
-                <%= render "friend_requests/form", user: user %>
-              </div>
-            <% end %>         
-          </div>
+          <% unless current_user == user %>
+            <div class="searched-user-container">
+              <%= user.username %>
+              <% unless current_user == user || %>
+                <% current_user.friend_requests_as_requestor.any? { |e| e.receiver == user } || %>
+                <% (FriendRequest.all.any? { |r| r.requestor.id == user.id && r.receiver.id == current_user.id }) %>
+                <div class="searched-user-button-container">
+                  <%= render "friend_requests/form", user: user %>
+                </div>
+              <% end %>         
+            </div>
+          <% end %>
         <% end %>
+        <!-- button for hiding div with search results -->
+          <input type="submit", value="Close" onclick="hideDiv()" class="close-searched-users-button">
+          <script>
+            function hideDiv() {
+              document.getElementById("search-users-container-results").style.display = "none";
+            }
+          </script>
       </div>
     </div>
   <% end %>
+
+  <!-- container with pending friend requests -->
+  <input type="submit", value="Friend Requests" onclick="friendRequestsDiv()" class="friend-requests-show-button">
+  <script>
+    function friendRequestsDiv() {
+      div = document.getElementById("friend-requests-show-container")
+      if(div.style.display == "block"){
+        div.style.display = "none";
+      }else{
+        div.style.display = "block";
+      }
+      document.getElementById("search-users-container-results").style.display = "none";
+    }
+  </script>
+  <div id="friend-requests-show-container" class="index-friend-requests-container">
+    <%= render "friend_requests/index", friend_requests_accepted: @friend_requests_accepted, friend_requests_pending: @friend_requests_pending %>
+  </div>
 </div>
 
 <!-- index container with all other data -->

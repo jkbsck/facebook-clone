@@ -3,13 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .search-users-container {
+  display: flex;
   position: relative;
-  border-right: 3vw;
-  margin: 2vw;
+  margin-left: 2vw;
+  right: 3vw;
   padding: 5px;
-  text-align: end;
+  justify-content: flex-end;
   border-top: solid 1px;
   border-bottom: solid 1px;
+}
+
+.find-friends-button {
+  //background: linear-gradient(to right,#fff, #69f 20%, rgb(20, 130, 250) 30%, rgb(20, 130, 250));
+  background: linear-gradient(to right,rgb(254, 254, 255), rgb(150, 154, 163) 10%, rgb(155, 154, 165) 90%, rgb(200, 200, 200)) !important;
+  padding: 2px 9px 9px 20px;
 }
 
 .search-users-container-results {
@@ -18,7 +25,7 @@
   flex-direction: column;
   right: 0px;
   left: auto;
-  //justify-content: flex-end;
+  margin-top: 25px;
 }
 
 .search-users-container-results-child {
@@ -28,8 +35,9 @@
   margin-right: 30px;
   padding-top: 5px;
   margin-top: 8px;
-  background-color: rgba(30, 229, 255, 0.9);
+  background-color: rgba(228, 249, 255, 0.9);
   border-radius: 7%;
+  border: solid rgba(0, 15, 58, 0.185) 1px;
 }
 
 .searched-user-container {
@@ -43,6 +51,24 @@
   padding-left: 20px;
 }
 
+.close-searched-users-button {
+  background: linear-gradient(to right,rgb(254, 254, 255), rgb(150, 154, 163) 45%, rgb(155, 154, 165) 55%, rgb(200, 200, 200)) !important;
+  //background: lawngreen !important;
+  font-size: 10px;
+  //width: min-content;
+}
+
+.friend-requests-show-button {
+  background: linear-gradient(to right,rgb(254, 254, 255), rgb(150, 154, 163) 10%, rgb(155, 154, 165) 90%, rgb(200, 200, 200)) !important;
+  padding: 2px 9px 9px 20px;
+}
+
+.index-friend-requests-container {
+  display: none;
+  position: absolute;
+  margin-top: 25px;
+}
+
 .index-container {
   display: flex;
   position: static;
@@ -50,7 +76,7 @@
 }
 
 .index-posts-container {
-  max-width: 60vw;
+  max-width: 80vw;
 }
 
 /*.index-friendships-container {
