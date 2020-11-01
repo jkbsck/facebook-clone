@@ -37,18 +37,20 @@
   <% end %>
 
   <!-- container with pending friend requests -->
-  <input type="submit", value="Friend Requests" onclick="friendRequestsDiv()" class="friend-requests-show-button">
-  <script>
-    function friendRequestsDiv() {
-      div = document.getElementById("friend-requests-show-container")
-      if(div.style.display == "block"){
-        div.style.display = "none";
-      }else{
-        div.style.display = "block";
+  <div class="friend-requests-show-button-container">
+    <input type="submit", value="Friend Requests" onclick="friendRequestsDiv()" class="friend-requests-show-button">
+    <script>
+      function friendRequestsDiv() {
+        div = document.getElementById("friend-requests-show-container")
+        if(div.style.display == "block"){
+          div.style.display = "none";
+        }else{
+          div.style.display = "block";
+        }
+        document.getElementById("search-users-container-results").style.display = "none";
       }
-      document.getElementById("search-users-container-results").style.display = "none";
-    }
-  </script>
+    </script>
+  </div>
   <div id="friend-requests-show-container" class="index-friend-requests-container">
     <%= render "friend_requests/index", friend_requests_accepted: @friend_requests_accepted, friend_requests_pending: @friend_requests_pending %>
   </div>
@@ -58,7 +60,66 @@
 <div class="index-container">
   <!-- container for table with posts, comments and likes -->
   <div class="index-posts-container">
-    <table>
+    <% @posts.each do |post| %>
+      <div class="post-container">
+        <div class="post-container-user">
+          <%= post.user.username %>
+          <div class="post-container-user-thumbnail">
+            PHOTO
+          </div>
+        </div>
+        <div class="post-container-content">
+          <div class="post-container-content-body">
+            <%= post.body %>
+            <div class="post-container-content-body-actions">
+              <span><%= link_to 'Show', post %></span>
+              <span><%= link_to 'Edit', edit_post_path(post) if current_user == post.user %></span>
+              <span><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } if current_user == post.user %></span>
+            </div>
+          </div>
+          <div class="post-container-content-likes">
+            <% unless post.liking_users.include?(current_user) %>
+              <%= form_with model: Like, local: true do |form| %>
+                <%= form.hidden_field :post_id, value: post.id %>
+                <%= form.submit "Like" %>
+              <% end %>
+            <% else %>
+              <% like = post.likes.find { |like| like.user == current_user } %>
+              <%= form_for like, method: "delete", local: true do |form| %>
+                <%= form.submit "Unlike" %>
+              <% end %>
+            <% end %>
+            <span class="post-likes-count">Likes: <%= post.nil? ? '0' : post.likes.count %></span>
+          </div>
+          <div class="post-container-content-comments">
+            <% if post.comments.any? %>
+              <% post.comments.each do |comment| %>
+                <div class="post-container-content-comment">
+                  <span><b><%= comment.user.username %>: </b></span>
+                  <span><%= comment.body %></span>
+                  <% if comment.user == current_user %>
+                    <span class="post-container-content-comment-delete"><%= form_for comment, method: "delete", local: true do |form| %>
+                      <%= form.submit "Delete comment" %>
+                    <% end %></span>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+            <%= form_with model: Comment, local: true do |form| %>
+              <div class="post-container-content-comment-add-form">
+                <%= form.hidden_field :post_id, value: post.id %> 
+                <%= form.text_field :body, style: "width: 45vw;" %>
+                <span class="post-container-content-comment-add"><%= form.submit "Add Comment" %></span>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+
+
+    <br><br><br><table>
       <thead>
         <tr>
           <th>Body</th>

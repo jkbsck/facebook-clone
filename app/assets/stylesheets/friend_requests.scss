@@ -12,17 +12,9 @@
   display: inline-flex;
   justify-content: space-between;
   align-content: flex-end;
-  padding: 5px;
+  padding: 2px;
 }
 
 .friend-request-accept-button-container {
-  padding-left: 10px;
-}
-
-.friend-request-accept-button {
-  background: linear-gradient(to right,#fff, #69f 20%, rgb(20, 130, 250) 30%, rgb(20, 130, 250));
-}
-
-.friend-request-accept-button:hover {
-  border-color: rgb(55, 157, 253);
+  padding-left: 5px;
 }

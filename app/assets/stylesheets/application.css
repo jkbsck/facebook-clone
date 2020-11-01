@@ -25,6 +25,7 @@ input[type=submit] {
   padding-left: 12px;
   padding-right: 5px;
   padding-bottom: 5px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 input[type=submit]:hover {

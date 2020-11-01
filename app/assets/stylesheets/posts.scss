@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// NAVBAR STYLES
+
 .search-users-container {
   display: flex;
   position: relative;
@@ -28,7 +30,7 @@
   margin-top: 25px;
 }
 
-.search-users-container-results-child {
+.search-users-container-results-child, .index-friend-requests-container {
   display: flex;
   width: 250px;
   flex-direction: column;
@@ -44,7 +46,6 @@
   display: inline-flex;
   justify-content: space-between;
   padding: 3px;
-  border-top: solid 1px;
 }
 
 .searched-user-button {
@@ -53,20 +54,29 @@
 
 .close-searched-users-button {
   background: linear-gradient(to right,rgb(254, 254, 255), rgb(150, 154, 163) 45%, rgb(155, 154, 165) 55%, rgb(200, 200, 200)) !important;
-  //background: lawngreen !important;
   font-size: 10px;
-  //width: min-content;
 }
 
 .friend-requests-show-button {
   background: linear-gradient(to right,rgb(254, 254, 255), rgb(150, 154, 163) 10%, rgb(155, 154, 165) 90%, rgb(200, 200, 200)) !important;
   padding: 2px 9px 9px 20px;
+  margin-left: 10px;
+  height: 24px;
+  margin-top: 3px;
 }
 
 .index-friend-requests-container {
   display: none;
   position: absolute;
-  margin-top: 25px;
+  margin-top: 33px;
+  width: 350px;
+  padding: 5px;
+}
+
+// MAIN CONTENT STYLES
+
+div {
+  border: solid 1px;
 }
 
 .index-container {
@@ -79,6 +89,72 @@
   max-width: 80vw;
 }
 
-/*.index-friendships-container {
-  max-width: 25vw;
-}*/
+.post-container {
+  display: grid;
+  grid-template-columns: 10vw 70vw;
+}
+
+.post-container-user {
+  text-align: center;
+  padding: 5px 0 5px 0;
+}
+
+.post-container-user-thumbnail {
+  height: 8vw;
+  width: 8vw;
+  border-radius: 50%;
+  margin: 5px 1vw 5px 1vw;
+  background-color: rgba(184, 135, 11, 0.651);
+}
+
+.post-container-content-body {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 1vw;
+  padding-right: 3vw;
+  font-size: 18px;
+}
+
+.post-container-content-body-actions {
+  position: absolute;
+  right: .2vw;
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  font-size: 13px;
+}
+
+.post-container-content-likes {
+  display: flex;
+  padding: .5vw;
+}
+
+.post-likes-count {
+  margin-left: 1vw;
+}
+
+.post-container-content-comments {
+  display: flex;
+  flex-direction: column;
+  padding: .5vW;
+}
+
+.post-container-content-comment {
+  display: grid;
+  grid-template-columns: 7vw auto auto;
+  padding: .3vw;
+}
+
+.post-container-content-comment-add-form {
+  display: flex;
+  justify-content: space-between;
+  padding: .2vw;
+}
+
+.post-container-content-comment-delete, .post-container-content-comment-add {
+  position: relative;
+  right: .2vw;
+  text-align: end;
+  //width: 150px;
+}
