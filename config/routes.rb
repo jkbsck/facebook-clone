@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :friend_requests, except: [:show]
 
   resources :friendships, only: [:create, :index, :destroy]
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
   resources :likes, only: [:create, :destroy]
 
   resources :comments, only: [:create, :destroy]
+
+  resource :profile, only: [:show, :edit, :update]
   
   devise_for :users, :controllers => { registrations: 'registrations' }
 

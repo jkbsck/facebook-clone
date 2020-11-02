@@ -67,10 +67,11 @@ comments_list = [
 
 User.all.destroy_all
 users_list.each do |id, username, email, password|
-  User.create!(id: id,
+  user = User.create!(id: id,
     username: username,
     email: email,
     password: password)
+  user.create_profile!
 end
 
 friend_requests_list.each do |id, requestor_id, receiver_id, accepted|

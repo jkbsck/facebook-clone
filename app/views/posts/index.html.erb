@@ -70,7 +70,7 @@
           <div class="post-container-user">
             <%= post.user.username %>
             <div class="post-container-user-thumbnail">
-              PHOTO
+              PHOTO<br><%= link_to "Profile", profile_path(:id => post.user.profile.id) %>
             </div>
             <%= post.updated_at.strftime "%B %d. %Y, %H:%M" %>
           </div>

@@ -1,0 +1,38 @@
+// Place all the styles related to the Profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.profile-show-container {
+  display: grid;
+  grid-template-columns: 20vw auto 25vw;
+  //max-width: 90vw;
+}
+
+.profile-info-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.profile-info-container-children {
+  padding: 10px;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.profile-picture-container-avatar {
+  text-align: center;
+}
+
+img {
+  max-width: 45vw;
+}
+
+.profile-description-container-body {
+  padding: 10px;
+  text-align: center;
+}
