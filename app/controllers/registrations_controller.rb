@@ -5,6 +5,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create_profile
     @profile = @user.create_profile!
+    @profile.avatar.attach(io: File.open('app/assets/images/default-profile_1.png'), filename: 'thumbnail.png', content_type: 'image/png')
   end
 
   def sign_up_params

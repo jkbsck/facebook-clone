@@ -10,7 +10,7 @@
       <span><%= @profile.user.email %></span>
     </div>
     <div class="profile-info-container-friends profile-info-container-children">
-      <ul>
+      <ul class="profile-friends-ul">
         <span>Friends:</span>
         <% @profile.user.friends.each do |friend| %>
           <li><%= friend.username %></li>
@@ -24,7 +24,7 @@
   <div class="profile-picture-container">
     <div class="profile-picture-container-avatar">
       <% if @profile.avatar.attached? %>
-        <image src="<%= (url_for(@profile.avatar)) %>">
+        <image class="profile-picture-container-img" src="<%= (url_for(@profile.avatar)) %>">
       <% end %>
     </div>
   </div>
