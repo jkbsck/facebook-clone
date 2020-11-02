@@ -28,3 +28,6 @@
 
 # Ignore /spring directory
 /spring/*.pid
+
+# Ignore facebook-api-login key and secret ENVs
+/config/initializers/omniauth.rb

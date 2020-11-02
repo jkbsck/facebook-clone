@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+# omniauth for facebook api login
+gem 'omniauth-facebook'
+
 # rails_12factor for Heroku deployment
 gem 'rails_12factor', group: :production
 
