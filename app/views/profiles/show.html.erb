@@ -2,41 +2,55 @@
 <p>Find me in app/views/profiles/show.html.erb</p>
 
 <div class="profile-show-container">
-  <div class="profile-info-container">
-    <div class="profile-info-container-username profile-info-container-children">
-      <span><%= @profile.user.username %></span>
+  <div class="profile-show-container-2">
+    <div class="profile-info-container">
+      <div class="profile-info-container-username profile-info-container-children">
+        <span><%= @profile.user.username %></span>
+      </div>
+      <div class="profile-info-container-email profile-info-container-children">
+        <span><%= @profile.user.email %></span>
+      </div>
+      <div class="profile-info-container-friends profile-info-container-children">
+        <ul class="profile-friends-ul">
+          <span>Friends:</span>
+          <% @profile.user.friends.each do |friend| %>
+            <li><%= friend.username %></li>
+          <% end %>
+          <% @profile.user.inverse_friends.each do |friend| %>
+            <li><%= friend.username %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-    <div class="profile-info-container-email profile-info-container-children">
-      <span><%= @profile.user.email %></span>
-    </div>
-    <div class="profile-info-container-friends profile-info-container-children">
-      <ul class="profile-friends-ul">
-        <span>Friends:</span>
-        <% @profile.user.friends.each do |friend| %>
-          <li><%= friend.username %></li>
+    <div class="profile-picture-container">
+      <div class="profile-picture-container-avatar">
+        <% if @profile.avatar.attached? %>
+          <image class="profile-picture-container-img" src="<%= (url_for(@profile.avatar)) %>">
         <% end %>
-        <% @profile.user.inverse_friends.each do |friend| %>
-          <li><%= friend.username %></li>
-        <% end %>
-      </ul>
+      </div>
     </div>
+    <div class="profile-description-container">
+      <div class="profile-description-container-body">
+        <h3>Description</h3>
+        <p>
+          <%= @profile.description %>
+        </p>
+      </div>
+    </div>
+    <% if current_user == @profile.user %>
+      <%= link_to "Edit", edit_profile_path(:id => @profile.id) %>
+    <% end %>
   </div>
-  <div class="profile-picture-container">
-    <div class="profile-picture-container-avatar">
-      <% if @profile.avatar.attached? %>
-        <image class="profile-picture-container-img" src="<%= (url_for(@profile.avatar)) %>">
+  <!--<div class="profile-show-container-posts">-->
+    <div class="index-posts-container">
+      <% if current_user == @profile.user %>
+        <%= link_to 'New Post', new_post_path %>
+      <% end %>
+      <% @profile.user.posts.reverse_each do |post| %>
+        <% if post.user == @profile.user %>
+          <%= render 'posts/post_list', post: post %>
+        <% end %>
       <% end %>
     </div>
-  </div>
-  <div class="profile-description-container">
-    <div class="profile-description-container-body">
-      <h3>Description</h3>
-      <p>
-        <%= @profile.description %>
-      </p>
-    </div>
-  </div>
-  <% if current_user == @profile.user %>
-    <%= link_to "Edit", edit_profile_path(:id => @profile.id) %>
-  <% end %>
+  <!--</div>-->
 </div>

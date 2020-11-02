@@ -58,7 +58,6 @@
 
 <!-- index container with all other data -->
 <div class="index-container">
- 
   <!-- container for table with posts, comments and likes -->
   <div class="index-posts-container">
     <% if user_signed_in? %>
@@ -66,89 +65,8 @@
     <% end %>
     <% @posts.reverse_each do |post| %>
       <% if post.user.friends.include?(current_user) || post.user.inverse_friends.include?(current_user) || post.user == current_user %>
-        <div class="post-container">
-          <div class="post-container-user">
-            <%= link_to "#{post.user.username}", profile_path(:id => post.user.profile.id) %>
-            <div class="post-container-user-thumbnail">
-              <image class="post-container-profile-img" src="<%= (url_for(post.user.profile.avatar)) %>">
-            </div>
-            <%= post.updated_at.strftime "%B %d. %Y, %H:%M" %>
-          </div>
-          <div class="post-container-content">
-            <div class="post-container-content-body">
-              <%= post.body %>
-              <div class="post-container-content-body-actions">
-                <span><%= link_to 'Show', post %></span>
-                <span><%= link_to 'Edit', edit_post_path(post) if current_user == post.user %></span>
-                <span><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } if current_user == post.user %></span>
-              </div>
-            </div>
-            <div class="post-container-content-likes">
-              <% unless post.liking_users.include?(current_user) %>
-                <%= form_with model: Like, local: true do |form| %>
-                  <%= form.hidden_field :post_id, value: post.id %>
-                  <%= form.submit "Like" %>
-                <% end %>
-              <% else %>
-                <% like = post.likes.find { |like| like.user == current_user } %>
-                <%= form_for like, method: "delete", local: true do |form| %>
-                  <%= form.submit "Unlike" %>
-                <% end %>
-              <% end %>
-              <span class="post-likes-count">Likes: <%= post.nil? ? '0' : post.likes.count %></span>
-            </div>
-            <div class="post-container-content-comments">
-              <% if post.comments.any? %>
-                <% post.comments.each do |comment| %>
-                  <div class="post-container-content-comment">
-                    <span><b><%= comment.user.username %>:</b><br>
-                    <span class="comment-date"><%= post.updated_at.strftime "%b. %d. %Y, %H:%M" %></span></span>
-                    <span><%= comment.body %></span>
-                    
-                    <% if comment.user == current_user %>
-                      <span class="post-container-content-comment-delete"><%= form_for comment, method: "delete", local: true do |form| %>
-                        <%= form.submit "Delete comment" %>
-                      <% end %></span>
-                    <% end %>
-                  </div>
-                <% end %>
-              <% end %>
-              <%= form_with model: Comment, local: true do |form| %>
-                <div class="post-container-content-comment-add-form">
-                  <%= form.hidden_field :post_id, value: post.id %> 
-                  <%= form.text_field :body, style: "width: 45vw;" %>
-                  <span class="post-container-content-comment-add"><%= form.submit "Add Comment" %></span>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
+        <%= render 'post_list', post: post %>
       <% end %>
     <% end %>
   </div>
 </div>
-  <!-- container with all users available to become friend with -->
-  <!--<div class="index-users-container">
-    <%# User.all.each do |user| %>
-      
-      <%# unless (user == current_user) || %>
-                <%# current_user.friend_requests_as_requestor.any? { |e| e.receiver == user } || %>
-                <%# (FriendRequest.all.any? { |r| r.requestor.id == user.id && r.receiver.id == current_user.id }) %>
-        <span><%#= user.username %></span>
-        <span><%#= render "friend_requests/form", user: user %></span><br>
-      <%# end %>
-      
-    <%# end %>
-  </div>-->
-
-  <!-- This part shows user's pending requests and -->
-  <!--<div class="index-friend-requests-container">
-    <%#= render "friend_requests/index", friend_requests_accepted: @friend_requests_accepted, friend_requests_pending: @friend_requests_pending %>
-  </div>-->
-
-  <!-- This part shows all friendships -->
-  <!--<ul class="index-friendships-container">
-    <%# @friendships.each do |friendship| %>
-      <li><%#= friendship.friend.username + " and " + friendship.inverse_friend.username + " are friends" %></li>
-    <%# end %>
-  </ul>-->
