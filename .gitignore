@@ -30,4 +30,7 @@
 /spring/*.pid
 
 # Ignore facebook-api-login key and secret ENVs
-/config/initializers/omniauth.rb
+# /config/initializers/omniauth.rb
+
+# Ignore application configuration
+/config/application.yml

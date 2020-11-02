@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+# Figaro gem for environment variables
+gem 'figaro'
+
 # omniauth for facebook api login
 gem 'omniauth-facebook'
 
