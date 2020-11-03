@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  after_action :create_profile, only: [:create]
+  #after_action :create_profile, only: [:create]
 
   private
 

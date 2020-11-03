@@ -63,7 +63,7 @@
     <% if user_signed_in? %>
       <%= link_to 'New Post', new_post_path %>
     <% end %>
-    <% @posts.reverse_each do |post| %>
+    <% @posts.sort_by{ |e| e.created_at }.reverse_each do |post| %>
       <% if post.user.friends.include?(current_user) || post.user.inverse_friends.include?(current_user) || post.user == current_user %>
         <%= render 'post_list', post: post %>
       <% end %>
