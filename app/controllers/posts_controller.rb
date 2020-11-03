@@ -8,8 +8,8 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @friendships = Friendship.all
-    @friend_requests_accepted = FriendRequest.all.map { |request| request if request.accepted == true }.compact
-    @friend_requests_pending = FriendRequest.all.map { |request| request if request.accepted == false }.compact
+    #@friend_requests_accepted = FriendRequest.all.map { |request| request if request.accepted == true }.compact
+    #@friend_requests_pending = FriendRequest.all.map { |request| request if request.accepted == false }.compact
 
     if params.has_key?(:search)
       @users_searched = User.search(params[:search])

@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resource :profile, only: [:show, :edit, :update]
   
   devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  get "/search", to: "application#search"
   
   # This part is yet to be implemented
   # devise_scope :user do

@@ -14,6 +14,8 @@
  *= require_self
  */
 
+ @import "posts.scss";
+
 input[type=submit] {
   background: linear-gradient(to right,#fff, #69f 20%, rgb(20, 130, 250) 30%, rgb(20, 130, 250));
   color: rgb(255, 255, 255);
