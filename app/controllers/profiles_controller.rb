@@ -7,6 +7,7 @@ class ProfilesController < ApplicationController
     else
       @profile = Profile.find(profile_params[:id])
     end
+    #@facebook_avatar = :facebook_avatar
   end
 
   def edit
@@ -15,6 +16,7 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = current_user.profile
+    #@profile.facebook_avatar == 1 ? @profile.facebook_avatar = true : @profile.facebook_avatar = false
     #@profile.update
     respond_to do |format|
       if @profile.update(profile_params)
@@ -29,6 +31,6 @@ class ProfilesController < ApplicationController
 
   private
     def profile_params
-      params.permit(:id, :user_id, :description, :avatar)
+      params.permit(:id, :user_id, :description, :avatar, :facebook_avatar)
     end
 end

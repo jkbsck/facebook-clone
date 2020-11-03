@@ -16,6 +16,11 @@
     <%= form.file_field :avatar %>
   </div>
 
+  <% if current_user.image %>
+    <%= form.label "Use Facebook Avatar" %>
+    <%= form.check_box :facebook_avatar, { :checked => profile.facebook_avatar } %>
+  <% end %>
+
   <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description, value: current_user.profile.description %>

@@ -24,10 +24,10 @@
     </div>
     <div class="profile-picture-container">
       <div class="profile-picture-container-avatar">
-        <% if @profile.avatar.attached? %>
-          <image class="profile-picture-container-img" src="<%= (url_for(@profile.avatar)) %>">
-        <% else @profile.user.image %>
+        <% if @profile.user.image && @profile.facebook_avatar %>
           <image class="profile-picture-container-img" src="<%= (url_for(@profile.user.image)) %>">
+        <% elsif @profile.avatar.attached? %>
+          <image class="profile-picture-container-img" src="<%= (url_for(@profile.avatar)) %>">     
         <% end %>
       </div>
     </div>
