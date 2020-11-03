@@ -2,7 +2,11 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @profile = Profile.find(profile_params[:id])
+    if profile_params[:id].nil?
+      @profile = current_user.create_profile!
+    else
+      @profile = Profile.find(profile_params[:id])
+    end
   end
 
   def edit

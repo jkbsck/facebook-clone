@@ -26,6 +26,8 @@
       <div class="profile-picture-container-avatar">
         <% if @profile.avatar.attached? %>
           <image class="profile-picture-container-img" src="<%= (url_for(@profile.avatar)) %>">
+        <% else @profile.user.image %>
+          <image class="profile-picture-container-img" src="<%= (url_for(@profile.user.image)) %>">
         <% end %>
       </div>
     </div>

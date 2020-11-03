@@ -16,10 +16,12 @@ Rails.application.routes.draw do
   resource :profile, only: [:show, :edit, :update]
   
   devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
+  
+  # This part is yet to be implemented
   # devise_scope :user do
   #   delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   # end
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'welcome#index'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html 
 end
