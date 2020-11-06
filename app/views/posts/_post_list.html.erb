@@ -16,11 +16,19 @@
         <div class="post-container-content-body-container-text">
           <%= post.body %><br><br>
         </div>
-        <div class="post-container-content-body-container-image">
-          <% if post.image.attached? %>
+        <% if post.image.attached? %>
+          <div class="post-container-content-body-container-image">
             <image class="post-container-image" src="<%= (url_for(post.image)) %>">
-          <% end %>
-        </div>
+          </div> 
+        <% elsif post.link && post.link.include?("youtube") %>
+          <div class="post-container-content-body-container-image">
+            <iframe width="420" height="315" src="<%= post.link %>"></iframe> 
+          </div>
+        <% elsif post.link %>
+          <div class="post-container-content-body-container-image">
+            <image class="post-container-image" src="<%= post.link %>">
+          </div>
+        <% end %>
       </div>
       <div class="post-container-content-body-actions">
         <span><%= link_to 'Show', post %></span>

@@ -140,11 +140,13 @@ div {
   display: flex;
   flex-direction: column;
   max-width: 100%;
+  min-width: 100%;
 }
 
 .post-container-content-body-container-text {
   max-width: 90%;
-  word-break: break-all;
+  min-width: 90%;
+  overflow-wrap: break-word;
 }
 
 .post-container-content-body-container-image {
@@ -212,4 +214,11 @@ div {
   position: relative;
   right: .2vw;
   text-align: end;
+}
+
+// New post form view
+
+.new-post-container {
+  display: flex;
+  justify-content: space-around;
 }

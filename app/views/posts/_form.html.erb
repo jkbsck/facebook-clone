@@ -11,18 +11,40 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-    <%= form.hidden_field :user_id, value: current_user.id %>
-  </div>
+  <div class="new-post-container">
+    <div class="field">
+      <%= form.label :body %>
+      <%= form.text_area :body %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+    </div>
 
-  <div class="form-image-container">
-    <%= form.label "Profile Photo" %>
-    <%= form.file_field :image %>
-  </div>
+    <%# <div class="new-post-container-media">
+      <input type="submit", value="Friend Requests" onclick="friendRequestsDiv()" class="friend-requests-show-button">
+      <script>
+        function friendRequestsDiv() {
+          div = document.getElementById("friend-requests-show-container")
+          if(div.style.display == "block"){
+            div.style.display = "none";
+          }else{
+            div.style.display = "block";
+          }
+          document.getElementById("search-users-container-results").style.display = "none";
+        }
+      </script>
+    </div> %>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="form-image-container">
+      <%= form.label "Upload image from computer" %>
+      <%= form.file_field :image %>
+    </div>
+
+    <div class="form-link-container">
+      <%= form.label "Add link" %>
+      <%= form.text_field :link %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
   </div>
 <% end %>
