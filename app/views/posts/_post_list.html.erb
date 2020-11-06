@@ -12,7 +12,16 @@
   </div>
   <div class="post-container-content">
     <div class="post-container-content-body">
-      <%= post.body %>
+      <div class="post-container-content-body-container">
+        <div class="post-container-content-body-container-text">
+          <%= post.body %><br><br>
+        </div>
+        <div class="post-container-content-body-container-image">
+          <% if post.image.attached? %>
+            <image class="post-container-image" src="<%= (url_for(post.image)) %>">
+          <% end %>
+        </div>
+      </div>
       <div class="post-container-content-body-actions">
         <span><%= link_to 'Show', post %></span>
         <span><%= link_to 'Edit', edit_post_path(post) if current_user == post.user %></span>
