@@ -5,7 +5,8 @@
       <% if post.user.profile.user.image && post.user.profile.facebook_avatar %>
         <image class="post-container-profile-img" src="<%= (url_for(post.user.profile.user.image + "&type=large")) %>">
       <% elsif post.user.profile.avatar.attached? %>
-        <image class="post-container-profile-img" src="<%= (url_for(post.user.profile.avatar)) %>">     
+        <!--<%# <image class="post-container-profile-img" src="<%= (url_for(post.user.profile.avatar)) %>"> %>-->
+        <image class="post-container-profile-img" src="<%= image_path(post.user.profile.avatar) %>">  
       <% end %>
     </div>
     <%= post.updated_at.strftime "%B %d. %Y, %H:%M" %>
