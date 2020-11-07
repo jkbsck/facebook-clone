@@ -72,7 +72,7 @@ users_list.each do |id, username, email, password|
     email: email,
     password: password)
   profile = user.create_profile!
-  profile.avatar.attach(io: File.open('app/assets/images/default-profile_1.png'), filename: 'thumbnail.png', content_type: 'image/png')
+  profile.avatar.attach(io: File.open('app/assets/images/default-profile_1.PNG'), filename: 'thumbnail.png', content_type: 'image/png')
 end
 
 friend_requests_list.each do |id, requestor_id, receiver_id, accepted|
