@@ -32,6 +32,7 @@
           <!--<%# <image class="profile-picture-container-img" src="<%= image_path(@profile.avatar) %>"> %>-->
           <%= image_tag(@profile.avatar, class: "profile-picture-container-img") %>
           <%= image_tag rails_blob_url(@profile.avatar) %>
+          <%= image_path('default-profile_1.PNG') %>
         <% end %>
       </div>
     </div>
