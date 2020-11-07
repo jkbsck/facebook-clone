@@ -3,10 +3,12 @@
     <%= link_to "#{post.user.username}", profile_path(:id => post.user.profile.id) %>
     <div class="post-container-user-thumbnail">
       <% if post.user.profile.user.image && post.user.profile.facebook_avatar %>
-        <image class="post-container-profile-img" src="<%= (url_for(post.user.profile.user.image + "&type=large")) %>">
+        <!--<image class="post-container-profile-img" src="<%= (url_for(post.user.profile.user.image + "&type=large")) %>">-->
+        <%= image_tag(post.user.profile.user.image + "&type=large", class: "post-container-profile-img") %>
       <% elsif post.user.profile.avatar.attached? %>
-        <image class="post-container-profile-img" src="<%= (url_for(post.user.profile.avatar)) %>">-->
-        <%# <image class="post-container-profile-img" src="<%= image_path(post.user.profile.avatar) %>">   %>
+        <!--<%# <image class="post-container-profile-img" src="<%= (url_for(post.user.profile.avatar)) %>"> %>-->
+        <!--<%# <image class="post-container-profile-img" src="<%= image_path(post.user.profile.avatar) %>">   %>-->
+        <%= image_tag(post.user.profile.avatar, class: "post-container-profile-img") %>
       <% end %>
     </div>
     <%= post.updated_at.strftime "%B %d. %Y, %H:%M" %>

@@ -25,10 +25,12 @@
     <div class="profile-picture-container">
       <div class="profile-picture-container-avatar">
         <% if @profile.user.image && @profile.facebook_avatar %>
-          <image class="profile-picture-container-img" src="<%= (url_for(@profile.user.image + "&type=large")) %>">
+          <!--<%# <image class="profile-picture-container-img" src="<%= (url_for(@profile.user.image + "&type=large")) %>"> %>-->
+          <%= image_tag(@profile.user.image + "&type=large", class: "profile-picture-container-img") %>
         <% elsif @profile.avatar.attached? %>
-          <image class="profile-picture-container-img" src="<%= (image_tag(@profile.avatar)) %>">-->
-          <%# <image class="profile-picture-container-img" src="<%= image_path(@profile.avatar) %>"> %>
+          <!--<%# <image class="profile-picture-container-img" src="<%= (image_tag(@profile.avatar)) %>"> %>-->
+          <!--<%# <image class="profile-picture-container-img" src="<%= image_path(@profile.avatar) %>"> %>-->
+          <%= image_tag(@profile.avatar, class: "profile-picture-container-img") %>
         <% end %>
       </div>
     </div>
