@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   def show
     if profile_params[:id].nil?
       @profile = current_user.create_profile!
-      @profile.avatar.attach(io: File.open(image_path('default-profile_1.PNG')), filename: 'thumbnail.png', content_type: 'image/png')
+      @profile.avatar.attach(io: File.open(image_tag('default-profile_1.PNG')), filename: 'thumbnail.png', content_type: 'image/png')
     else
       @profile = Profile.find(profile_params[:id])
     end
