@@ -27,7 +27,8 @@
         <% if @profile.user.image && @profile.facebook_avatar %>
           <image class="profile-picture-container-img" src="<%= (url_for(@profile.user.image + "&type=large")) %>">
         <% elsif @profile.avatar.attached? %>
-          <image class="profile-picture-container-img" src="<%= (url_for(@profile.avatar)) %>">     
+          <image class="profile-picture-container-img" src="<%= (url_for(@profile.avatar)) %>">
+          <%= image_path('default-profile_1.PNG') %>   
         <% end %>
       </div>
     </div>
