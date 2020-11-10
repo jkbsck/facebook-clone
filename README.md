@@ -1,31 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
 -------------------------------------------------------------------------------
 
+# SOCIAL SIDE
+
 This is a facebook clone app.
+
+https://socialside.herokuapp.com/
 
 *  Ruby version: ruby 2.6.5p114  
 
@@ -35,6 +16,4 @@ This is a facebook clone app.
 
 -------------------------------------------------------------------------------
 
-# Don't forget to set up 'puma' gem, Jakub!
 
-# Guard gem is inside of config/enviroment.rb => test. Shouldn't that be development?

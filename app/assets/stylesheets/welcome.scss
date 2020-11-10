@@ -1,3 +1,71 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.section-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(https://static.toiimg.com/photo/msid-68113999,width-96,height-65.cms);
+  background-size: cover;
+}
+
+// HEADER
+header {
+  background-color: rgba(47, 79, 79, 0.5);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 50px;
+}
+
+// ARTICLE
+.article-container-wrap {
+  position: absolute;
+  top: 50px;
+  bottom: 50px;
+  left: 15%;
+  right: 15%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(221, 221, 221, 0.4) 2%, rgba(221, 221, 221, 0.4) 98%, rgba(255, 255, 255, 0));
+}
+
+.article-container {
+  margin: 0 5%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome {
+  font-family: Tahoma;
+  font-size: 4vw;
+  width: 70%;
+  height: 5vw;
+  color: rgba(41, 12, 12, 0.712);
+  color: rgba(59, 101, 129, 0.6);
+  // border: solid 1px;
+}
+
+.name {
+  font-family: Tahoma;
+  font-size: 8vw;
+  width: 90%;
+  height: 20%;
+  color: rgba(59, 101, 129, 0.6);
+  color: rgba(41, 12, 12, 0.712);
+  // border: solid 1px;
+}
+
+// FOOTER
+footer {
+  background-color: rgba(47, 79, 79, 0.5);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+}
+  

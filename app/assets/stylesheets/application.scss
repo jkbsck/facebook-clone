@@ -14,7 +14,20 @@
  *= require_self
  */
 
- @import "posts.scss";
+// config
+html {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  // overflow: hidden;
+}
+
+@import "posts.scss";
 
 input[type=submit] {
   background: linear-gradient(to right,#fff, #69f 20%, rgb(20, 130, 250) 30%, rgb(20, 130, 250));
