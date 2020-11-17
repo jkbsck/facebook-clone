@@ -47,3 +47,16 @@ input[type=submit]:hover {
   transform: scale(1.03);
   border-color: rgb(55, 157, 253);
 }
+.notification-container {
+  position: relative;
+  width: max-content;
+  margin: 0 auto;
+  text-align: center;
+  color: green;
+  z-index: 3;
+  font-size: 20px;
+  font-weight: bold;
+  .alert, .notice {
+    
+  }
+}

@@ -24,9 +24,14 @@ header {
   // align-items: center;
 }
 
-header div {
+.header-wrapper {
+  display: flex;
+  width: 50vw;
+}
+
+.header-wrapper div {
   height: 32px;
-  width: 5vw;
+  width: 8vw;
   border-radius: 12px;
   margin: .5vw;
   margin-top: 24px;
@@ -38,7 +43,6 @@ header div {
 
 .nav-bar-wrap1 {
   margin-left: 3vw;
-  width: 8vw;
   background-color: rgb(41, 12, 12);
   background-image: radial-gradient(farthest-corner at 0 0, #3B5998, #3B5998 10%, #3b589875 50%, #3B5998 90%, #3B5998);
   display: flex;
@@ -51,7 +55,6 @@ header div {
 }
 
 .nav-bar-wrap2 {
-  width: 8vw;
   // background-color: rgb(20, 40, 220);
   background-image: radial-gradient(farthest-corner at 0 0, #3B5998, #3B5998 10%, #3b589875 50%, #3B5998 90%, #3B5998);
   background-color: #3de0cb;
@@ -74,7 +77,6 @@ header div {
 }
 
 .nav-bar-wrap3 {
-  width: 8vw;
   // background-color: rgb(20, 40, 220);
   background-image: radial-gradient(farthest-corner at 0 0, #3B5998, #3B5998 10%, #3b589875 50%, #3B5998 90%, #3B5998);
   background-color: #ff006a;
@@ -88,12 +90,12 @@ header div {
   border: outset 3px #3B5998;
 }
 
-header div:hover {
+.header-wrapper div:hover {
   scale: 1.05;
   cursor: pointer;
 }
 
-header div:active {
+.header-wrapper div:active {
   scale: .95;
   border: inset 3px #3B5998;
   box-shadow: none;
@@ -102,6 +104,27 @@ header div:active {
 @media only screen and (max-width: 1500px) {
   .nav-bar-wrap2 span {
     display: none;
+  }
+}
+
+@media only screen and (min-width: 2500px) {
+  .header-wrapper div {
+    // scale: 1.5;
+    // width: 5vw;
+    height: 2vh;
+    font-size: 1vh;
+    margin-left: 4vw;
+    // margin-top: 24px;
+  }
+  .header-wrapper {
+    // margin-left: 5vw;
+  }
+  .header-wrapper * {
+    scale: 1.5;
+    // margin-left: 5vw;
+  }
+  .nav-bar-wrap1 {
+    margin-left: 1vw;
   }
 }
 
