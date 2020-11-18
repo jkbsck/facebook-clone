@@ -56,7 +56,20 @@ input[type=submit]:hover {
   z-index: 3;
   font-size: 20px;
   font-weight: bold;
-  .alert, .notice {
-    
+}
+
+// Sign in / Sign up pages
+.unsigned {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.unsigned-container {
+  margin-top: 50px;
+  padding: 50px;
+  div {
+    position: relative;
+    margin: 0 auto;
+    width: max-content;
   }
 }

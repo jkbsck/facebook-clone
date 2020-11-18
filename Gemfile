@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem 'guard', '~> 2.16', '>= 2.16.2'
+
+# Guard livereload
+gem 'guard-livereload', '~> 2.5', '>= 2.5.2'
+
 # Figaro gem for environment variables
 gem 'figaro'
 
