@@ -1,3 +1,15 @@
+<header class="navbar-main">
+  <div class="navbar-wrapper">
+    <div class="navbar-user">
+    
+    </div>
+    <div class="navbar-actions">
+    
+    </div>
+  </div>
+</header>
+
+
 <div class="navbar-container">
   <!-- This form searches for users and return results to same url -->
   <%= form_with(url: "#{request.env["PATH_INFO"]}", method: 'get', local: true) do %>

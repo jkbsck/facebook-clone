@@ -28,6 +28,7 @@ body {
 }
 
 @import "posts.scss";
+@import "navbar_main.scss";
 
 input[type=submit] {
   background: linear-gradient(to right,#fff, #69f 20%, rgb(20, 130, 250) 30%, rgb(20, 130, 250));
@@ -70,6 +71,8 @@ input[type=submit]:hover {
   div {
     position: relative;
     margin: 0 auto;
+    padding-top: .5rem;
+    text-align: center;
     width: max-content;
   }
 }
