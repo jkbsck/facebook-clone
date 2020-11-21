@@ -14,3 +14,17 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+// close divs with .dropdown-content class on click anywhere else except of divs with dropdown-toggler class
+window.onclick = function(event) {
+  if (!event.target.matches('.dropdown-toggler')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('dropdown-show')) {
+        openDropdown.classList.remove('dropdown-show');
+      }
+    }
+  }
+}

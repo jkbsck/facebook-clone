@@ -1,13 +1,48 @@
 <header class="navbar-main">
   <div class="navbar-wrapper">
     <div class="navbar-user">
-    
+      <div class="thumbnail thumbnail-md" onclick="goToProfile()">
+      <%# IF user's image from FB exists && if it's default ELSE manually uploaded img %>
+        <% if current_user.image && curent_user.profile.facebook_avatar %>
+          <%= image_tag(current_user.image + "&type=large", class: "profile-picture-container-img") %>
+        <% elsif current_user.profile.avatar.attached? %>
+          <%= image_tag(current_user.profile.avatar) %>
+        <% end %>
+      </div>    
+      <div class="navbar-user-actions">
+        <div class="show-more">
+          <div class="navbar-user-dropdown dropdown-toggler" onclick="navbarUserDropdownToggle()">
+            D
+          </div>
+
+          <div id="navbar-user-dropdown-menu1" class="navbar-user-dropdown-menu dropdown-content" aria-labelledby="navbar-user-dropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="navbar-actions">
     
     </div>
   </div>
 </header>
+
+<script>
+  // by clicking the profile picture redirects to current user's profile page
+  function goToProfile() {
+    location.replace("<%= profile_path(current_user.profile) %>");
+  }
+
+  // display / hide dropdown menu for user's actions e.g. edit username, password, cancel account...
+  function navbarUserDropdownToggle() {
+    document.getElementById("navbar-user-dropdown-menu1").classList.toggle("dropdown-show");
+  } 
+</script>
+
+
+
 
 
 <div class="navbar-container">

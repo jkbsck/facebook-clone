@@ -4,12 +4,45 @@
   height: 60px;
   background-color: rgb(157, 230, 157);
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .navbar-wrapper {
-  width: 90%;
+  width: 95%;
   height: 50px;
-  margin: 5px auto;
   background-color: rgb(96, 221, 215);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.navbar-user {
+  width: 120px;
+  height: 160px;
+  background-color: rgb(223, 107, 107);
+  .thumbnail {
+    position: relative;
+    margin-top: 1rem;
+    // z-index: 10;
+    cursor: pointer;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &-dropdown {
+    position: relative;
+    &-menu {
+      position: absolute;
+      display: none;
+      z-index: 10;
+    }
+  }
+  border-radius: 6px 12px 24px 48px;
+}
+.navbar-actions {
+  width: 30%;
+  height: 100%;
+  background-color: rgb(101, 228, 84);
 }
 
 // NAVBAR STYLES

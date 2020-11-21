@@ -15,16 +15,11 @@
  */
 
 // config
-html {
+* {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
   margin: 0;
-}
-
-body {
-  margin: 0;
-  // overflow: hidden;
 }
 
 @import "posts.scss";
@@ -57,6 +52,25 @@ input[type=submit]:hover {
   z-index: 3;
   font-size: 20px;
   font-weight: bold;
+}
+
+// DEFAULT THUMBNAIL
+.thumbnail {
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.651);
+  border: solid 2px;
+  overflow: hidden;
+  &-md {
+    scale: 1.25;
+  }
+}
+
+// SHOW dropdown div class
+.dropdown-show {
+  display: block !important;
 }
 
 // Sign in / Sign up pages
