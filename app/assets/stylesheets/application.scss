@@ -68,9 +68,17 @@ input[type=submit]:hover {
   }
 }
 
-// SHOW dropdown div class
+// DROPDPWN DEFAULT CLASSES
 .dropdown-show {
   display: block !important;
+}
+.dropdown-toggler {
+  position: relative;
+  cursor: pointer;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
 }
 
 // Sign in / Sign up pages

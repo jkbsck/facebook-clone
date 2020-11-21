@@ -8,23 +8,57 @@
         <% elsif current_user.profile.avatar.attached? %>
           <%= image_tag(current_user.profile.avatar) %>
         <% end %>
-      </div>    
-      <div class="navbar-user-actions">
-        <div class="show-more">
-          <div class="navbar-user-dropdown dropdown-toggler" onclick="navbarUserDropdownToggle()">
-            D
+      </div>
+        <%# dropdown actions %>
+      <div class="actions">
+      <%# dropdown menu container %>
+        <div class="action-dropdown">
+          <div class="options dropdown-toggler" onclick="userOptionsToggle()">
+            O
+            <%# dropdown %>
+            <div id="options-dropdown" class="dropdown-options dropdown-content">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
           </div>
-
-          <div id="navbar-user-dropdown-menu1" class="navbar-user-dropdown-menu dropdown-content" aria-labelledby="navbar-user-dropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      <%# friend requests %>
+        <div class="action-friend-requests">
+          <div class="friend-requests dropdown-toggler" onclick="userFriendRequestsToggle()">
+            F
+            <%# dropdown %>
+            <div id="friend-requests-dropdown" class="dropdown-friend-requests dropdown-content">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+        </div>
+      <%# user's notifications %>
+        <div class="action-notifications">
+          <div class="notifications dropdown-toggler" onclick="userNotificationsToggle()">
+            N
+            <%# dropdown %>
+            <div id="notifications-dropdown" class="dropdown-notifications dropdown-content">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="navbar-actions">
-    
+      <div class="search-bar">
+        FIND FRIENDS
+      </div>
+      <div class="contacts">
+        CONTACTS
+      </div>
+      <div class="faq">
+        FAQ
+      </div>
     </div>
   </div>
 </header>
@@ -36,8 +70,16 @@
   }
 
   // display / hide dropdown menu for user's actions e.g. edit username, password, cancel account...
-  function navbarUserDropdownToggle() {
-    document.getElementById("navbar-user-dropdown-menu1").classList.toggle("dropdown-show");
+  function userOptionsToggle() {
+    document.getElementById("options-dropdown").classList.toggle("dropdown-show");
+  }
+  // display / hide friend requests
+  function userFriendRequestsToggle() {
+    document.getElementById("friend-requests-dropdown").classList.toggle("dropdown-show");
+  }
+  // display / hide notifications 
+  function userNotificationsToggle() {
+    document.getElementById("notifications-dropdown").classList.toggle("dropdown-show");
   } 
 </script>
 

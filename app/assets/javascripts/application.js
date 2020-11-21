@@ -18,7 +18,7 @@
 // close divs with .dropdown-content class on click anywhere else except of divs with dropdown-toggler class
 window.onclick = function(event) {
   if (!event.target.matches('.dropdown-toggler')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var dropdowns = document.getElementsByClassName("dropdown-show");
     var i;
     for (i = 0; i < dropdowns.length; i++) {
       var openDropdown = dropdowns[i];

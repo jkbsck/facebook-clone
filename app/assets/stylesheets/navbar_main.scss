@@ -18,31 +18,52 @@
 .navbar-user {
   width: 120px;
   height: 160px;
+  border-radius: 6px 12px 24px 48px;
   background-color: rgb(223, 107, 107);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 1;
   .thumbnail {
     position: relative;
     margin-top: 1rem;
-    // z-index: 10;
     cursor: pointer;
     img {
       width: 100%;
       height: 100%;
     }
   }
-  &-dropdown {
-    position: relative;
-    &-menu {
-      position: absolute;
-      display: none;
-      z-index: 10;
+  .actions {
+    margin-right: 5px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    div {
+      padding: 2px;
+      background-color: lime;
     }
   }
-  border-radius: 6px 12px 24px 48px;
+}
+.dropdown-content {
+  height: 150px;
+  width: 150px;
+  background-color: lightslategrey;
 }
 .navbar-actions {
   width: 30%;
   height: 100%;
   background-color: rgb(101, 228, 84);
+  display: flex;
+  div {
+    height: 80%;
+    margin: auto 1px;
+    flex: 1;
+    border: 1px solid #bba;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 }
 
 // NAVBAR STYLES
